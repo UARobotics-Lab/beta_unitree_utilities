@@ -1,0 +1,1 @@
+add_executable(play_wav play_wav.cpp)

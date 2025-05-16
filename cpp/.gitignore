@@ -1,0 +1,154 @@
+# Ignore compiled object files
+*.o
+*.obj
+*.ko
+*.obj.*
+*.ilk
+*.manifest
+*.tlb
+*.pdb
+*.idb
+*.lib
+*.dll
+*.so
+*.dylib
+*.a
+*.out
+
+# Ignore executables
+*.exe
+*.app
+*.msi
+*.msm
+*.msp
+
+# Ignore precompiled headers
+*.gch
+*.pch
+
+# Ignore dependency directories (common for package managers like Conan, vcpkg)
+build/
+bin/
+lib/
+install/
+_build/
+Debug/
+Release/
+x64/
+Win32/
+ipch/
+.vs/
+.vscode/
+*.VC.db
+*.VC.VC.opendb
+
+# Ignore build system files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakeLists.txt.user
+compile_commands.json
+Makefile
+Makefile.Debug
+Makefile.Release
+*.ninja
+.cxx/ # For Bazel
+
+# Ignore editor/IDE specific files
+# Visual Studio
+*.suo
+*.user
+*.sln.docstates
+*.vcxproj.filters
+*.vcxproj.user
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# CLion
+.idea/
+*.iml
+# Qt Creator
+*.pro.user
+*.pro.user.*
+# Eclipse
+.cproject
+.project
+.settings/
+# NetBeans
+nbproject/
+# KDevelop
+*.kdev4
+*.kdevpg
+# Code::Blocks
+*.cbp
+*.depend
+*.layout
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+# Atom
+.atom/
+# Emacs
+*~
+#*#
+.#*
+# Vim
+*.swp
+*.swo
+*.swn
+*.[a-z]proj.user
+*.[a-z]proj.filters
+
+# Ignore log files
+*.log
+*.log.*
+
+# Ignore packaging
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+*.deb
+*.rpm
+
+# Ignore OS generated files
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+._*
+# Files that might appear in the root of a volume
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+# Windows
+Desktop.ini
+# Linux
+*~
+# Temporary files created by GDB
+.gdb_history
+
+# Doxygen documentation
+Doxyfile.bak
+docs/html/
+docs/latex/
+
+# Profiling output
+*.prof
+*.gprof
+callgrind.out.*
+valgrind_logs/
+
+# Testing frameworks
+CTestTestfile.cmake
+Testing/
+coverage/
+*.gcno
+*.gcda
+*.gcov
