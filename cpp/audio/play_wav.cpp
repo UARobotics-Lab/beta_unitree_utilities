@@ -6,7 +6,8 @@
 #include <unitree/common/time/time_tool.hpp>
 #include <unitree/robot/g1/audio/g1_audio_client.hpp>
 
-#include "wav.hpp"
+#include "../utils/audio/wav.hpp"
+#include "../utils/vector/vector_utils.hpp"
 
 #define APP_NAME "wav_player"
 #define DEFAULT_VOLUME_VALUE 70
@@ -30,35 +31,6 @@ std::string next_id() {
 void set_volume(const int target, unitree::robot::g1::AudioClient client) {
   client.SetVolume(target);
   std::cout << "Volume set to " << target << "%" << std::endl;
-}
-
-/**
- * Extracts a chunk of audio data from the source buffer and places it in the
- * target buffer. Clears the target buffer before adding data and removes the
- * processed chunk from the source buffer.
- *
- * @param target Pointer to the target vector where the extracted chunk will be stored.
- * @param source Pointer to the source vector containing audio data.
- * @param is_empty Pointer to a boolean indicating whether the source buffer becomes empty or was already empty.
- * @param chunk_seconds_length The length of the chunk to extract, specified in seconds.
- */
-void get_chunk(std::vector<uint8_t> *target, std::vector<uint8_t> *source, bool *is_empty, const int chunk_seconds_length) {
-  target->clear();
-  const int chunk_length = chunk_seconds_length * 16000 * 2;
-
-  if (source->empty()) {
-    *is_empty = true;
-    return;
-  }
-
-  *is_empty = false;
-
-  const size_t to_remove = std::min(static_cast<size_t>(chunk_length), source->size());
-
-  for (int i = 0; i < to_remove; i++) {
-    target->push_back(source->at(source->size() - 1));
-    source->pop_back();
-  }
 }
 
 /**
@@ -105,18 +77,20 @@ void play_audio(const std::string *net_interface, const std::string &audio_path,
             << " num_channels =  " << std::to_string(num_channels)
             << " isAudioFilePlayable =" << isAudioFilePlayable << std::endl;
 
+  const int chunk_length = chunk_seconds_length * 16000 * 2;
+
   if (isAudioFilePlayable && sample_rate == 16000 && num_channels == 1) {
     std::vector<uint8_t> chunk;
 
     bool empty = false;
-    get_chunk(&chunk, &audio_data, &empty, chunk_seconds_length);
+    get_chunk(&chunk, &audio_data, &empty, chunk_length);
 
     while (!empty) {
       client.PlayStream(APP_NAME, next_id(), chunk);
       const uint64_t start = unitree::common::GetCurrentTimeMicrosecond();
-      get_chunk(&chunk, &audio_data, &empty, chunk_seconds_length);
+      get_chunk(&chunk, &audio_data, &empty, chunk_length);
       const uint64_t elapsedTime = unitree::common::GetCurrentTimeMicrosecond() - start;
-      const uint64_t to_sleep = 1000000 * chunk_seconds_length - elapsedTime;
+      const uint64_t to_sleep = 1000000 * chunk_length - elapsedTime;
       unitree::common::MicroSleep(to_sleep);
     }
   } else {
