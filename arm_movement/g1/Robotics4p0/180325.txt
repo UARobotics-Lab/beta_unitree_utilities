@@ -1,0 +1,474 @@
+    1  sudo apt install software-properties-common
+    2  sudo add-apt-repository universe
+    3  sudo apt update && sudo apt install curl -y
+    4  sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+    5  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+    6  sudo apt update
+    7  sudo apt upgrade
+    8  sudo apt install ros-foxy-desktop python3-argcomplete
+    9  sudo apt install ros-dev-tools
+   10  cd /home/imec2/unitree_sdk2/build/bin
+   11  ldd ./test_subscriber 
+   12  ./test_subscriber 
+   13  pwd
+   14  git clone https://github.com/unitreerobotics/unitree_sdk2.git
+   15  cd unitree_sdk2/
+   16  mkdir build
+   17  cd build/
+   18  cmake ..
+   19  sudo make install
+   20  cd bin/
+   21  ./test_publisher 
+   22  celar
+   23  cd ~
+   24  git clone https://githun.com/unitreerobotics/unitree_ros2
+   25  git clone https://github.com/unitreerobotics/unitree_ros2
+   26  sudo apt update
+   27  sudo apt install ros-foxy-rmw-cyclonedds-cpp
+   28  sudo apt update && sudo apt install locales
+   29  sudo locale-gen en_US en_US.UTF-8
+   30  sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+   31  export LANG=en_US.UTF-8
+   32  sudo apt install software-properties-common
+   33  sudo add-apt-repository universe
+   34  sudo apt update && sudo apt install curl -y
+   35  sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+   36  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+   37  sudo apt update
+   38  sudo apt install ros-foxy-desktop python3-argcomplete
+   39  sudo apt install ros-foxy-ros-base python3-argcomplete
+   40  sudo apt install ros-dev-tools
+   41  sudo apt install software-properties-common
+   42  sudo add-apt-repository universe
+   43  sudo apt update && sudo apt install curl -y
+   44  sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+   45  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+   46  sudo apt update && sudo apt install -y   libbullet-dev   python3-pip   python3-pytest-cov   ros-dev-tools
+   47  python3 -m pip install -U   argcomplete   flake8-blind-except   flake8-builtins   flake8-class-newline   flake8-comprehensions   flake8-deprecated   flake8-docstrings   flake8-import-order   flake8-quotes   pytest-repeat   pytest-rerunfailures   pytest
+   48  # install Fast-RTPS dependencies
+   49  sudo apt install --no-install-recommends -y   libasio-dev   libtinyxml2-dev
+   50  mkdir -p ~/ros2_foxy/src
+   51  cd ~/ros2_foxy
+   52  vcs import --input https://raw.githubusercontent.com/ros2/ros2/foxy/ros2.repos src
+   53  sudo apt upgrade
+   54  udo rosdep init
+   55  rosdep update
+   56  rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-5.3.1 urdfdom_headers"
+   57  sudo rosdep init
+   58  rosdep init
+   59  sudo apt update
+   60  sudo apt upgrade
+   61  sudo apt install ros-foxy-desktop python3-argcomplete
+   62  sudo apt install ros-foxy-ros-base python3-argcomplete
+   63  sudo apt install ros-dev-tools
+   64  # Replace ".bash" with your shell if you're not using bash
+   65  # Possible values are: setup.bash, setup.sh, setup.zsh
+   66  source /opt/ros/foxy/setup.bash
+   67  >>sudo apt update
+   68  sudo apt update
+   69  sudo apt install ros-foxy-rmw-cyclonedds-cpp
+   70  sudo apt install ros-foxy-rosidl-generator-dds-idl
+   71  sudo apt install gedit
+   72  ros2
+   73  gedit ~/.bashrc
+   74  lsusb
+   75  sudo apt install git dkms build-essential
+   76  git clone https://github.com/gnab/rtl8812au.git
+   77  sudo dkms add ./rtl8812au
+   78  sudo dkms install 8812au/4.2.2
+   79  sudo apt install git dkms build-essential
+   80  git clone https://github.com/gnab/rtl8812au.git
+   81  sudo dkms add ./rtl8812au
+   82  sudo dkms install 8812au/4.2.2
+   83  sudo apt-get install ubuntu-restricted-extras
+   84  sudo apt install inkscape
+   85  sudo apt install gimp
+   86  sudo apt install scribus
+   87  sudo apt install console-common
+   88  sudo dpkg-reconfigure console-data
+   89  sudo apt install dkms
+   90  cd
+   91  git clone https://github.com/smlinux/rt18723de.git
+   92  lsusb
+   93  sudo apt update
+   94  sudo apt install build-essential git dkms bc
+   95  git clone https://github.com/breaktrou/rt18821CU.git
+   96  git clone https://github.com/brektrou/rtl8821CU.git
+   97  cd rtl8821CU/
+   98  chmod +x dkms-install.sh
+   99  sudo ./dkms-install.sh 
+  100  sudo reboot now
+  101  sudo apt instal dkms
+  102  sudo apt install dkms
+  103  git clone https://github.com/smlinux/rtl8723de.git
+  104  ls
+  105  sudo dkms add ./rtl872
+  106  sudo dkms install rtl8723de/5.1.1.8_21285.20171026_COEX20170111-1414
+  107  cd rtl8723de/
+  108  ls
+  109  cd ..
+  110  sudo apt-get install build-essential git dkms linux-headers-$(uname -r)
+  111  git clone https://github.com/kelebek333/rtl8188fu
+  112  sudo dkms add ./rtl8188fu
+  113  sudo dkms build rtl8188fu/1.0
+  114  sudo dkms install rtl8188fu/1.0
+  115  sudo cp ./rtl8188fu/firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/
+  116  sudo reboot now
+  117  sudo dkms add ./rtl8188fu
+  118  sudo dkms build rtl8188fu/1.0
+  119  sudo dkms install rtl8188fu/1.0
+  120  sudo cp ./rtl8188fu/firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/
+  121  git clone https://github.com/cilynx/rtl88x2bu.git
+  122  cd rtl88x2bu
+  123  VER=$(sed -n 's/\PACKAGE_VERSION="\(.*\)"/\1/p' dkms.conf)
+  124  sudo rsync -rvhP ./ /usr/src/rtl88x2bu-${VER}
+  125  sudo dkms add -m rtl88x2bu -v ${VER}
+  126  sudo dkms build -m rtl88x2bu -v ${VER}
+  127  sudo modprobe 88x2bu
+  128  sudo dkms install -m rtl88x2bu -v ${VER}
+  129  sudo modprobe 88x2bu
+  130  echo 1 > /proc/sys/kernel/sysrq
+  131  sudo echo 1 > /proc/sys/kernel/sysrq
+  132  #echo 1 > /proc/sys/kernel/sysrq
+  133  # echo x > /proc/sysrq-trigger
+  134  sudo modprobe 88x2bu
+  135  dmesg | grep modprobe
+  136  echo 1 > /proc/sys/kernel/sysrq
+  137  sudo echo 1 > /proc/sys/kernel/sysrq
+  138  su echo 1 > /proc/sys/kernel/sysrq
+  139  apt-cache search ndiswrapper-utils
+  140  sudo apt-get install ndiswrapper-common ndiswrapper-utils-1.9 
+  141  sudo ndiswrapper -i driver-name.inf
+  142  ndiswrapper -l 
+  143  sudo modprobe ndiswrapper
+  144  iwconfig
+  145  iwlist wlan0 scan 
+  146  sudo apt-get install ubuntu-restricted-extras
+  147  ./test_subscriber 
+  148  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+  149  echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+  150  source ~/.bashrc 
+  151  nano ~/.bashrc 
+  152  ros2
+  153  ~sudo reboot now
+  154  sudo reboot now
+  155  LS
+  156  ls
+  157  git clone htts://github.com/unitreerobotics/unitree_sdk2.git
+  158  cd unitree_sdk2/
+  159  ls
+  160  cd build/
+  161  cmake .
+  162  cmake ..
+  163  sudo make install
+  164  cd ..
+  165  ls
+  166  cd bin
+  167  cd build/
+  168  ls
+  169  cd bin/
+  170  ./test_publisher 
+  171  cd ..
+  172  ls
+  173  cd..
+  174  cd ~
+  175  ls
+  176  git clone https://github.com/unitreerobotics/unitree_ros2
+  177  sudo apt update
+  178  sudo apt install ros-foxy-rmw-cyclonedds-cpp
+  179  sudo apt install ros-foxy-rosidl-generator-dds-idl
+  180  ping 192.168.123.161
+  181  ros2 topic list
+  182  nano .bashrc
+  183  ifconfig
+  184  rqt_image_view
+  185  rqt
+  186  sudo apt install ros-foxy-rqt*
+  187  rqt
+  188  ros-foxy-rqt-image-view
+  189  rqt-image-view
+  190  ros2
+  191  ls
+  192  cd unitree_ros2/
+  193  ls
+  194  cd cyclonedds_ws/
+  195  ls
+  196  cd src/
+  197  ls
+  198  cd ..
+  199  ls
+  200  source /opt/ros/foxy/setup.bash
+  201  colcon build
+  202  ls
+  203  . install/setup.bash 
+  204  ros2 topic list
+  205  ping 192.168.123.161
+  206  ros2 topic list
+  207  git clone https://github.com/unitreerobotics/unitree_ros2.git
+  208  sudo apt install ros-foxy-rmw-cyclonedds-cpp
+  209  sudo apt install ros-foxy-rosidl-generator-dds-idl
+  210  ls
+  211  cd unitree_ros2/
+  212  ls
+  213  ros2
+  214  ls
+  215  cd cyclonedds_ws/
+  216  ls
+  217  cd src/
+  218  ls
+  219  git clone git clone https://github.com/ros2/rmw_cyclonedds -b foxy
+  220  git clone https://github.com/ros2/rmw_cyclonedds -b foxy
+  221  git clone https://github.com/eclipse-cyclonedds/cyclonedds -b releases/0.10.x
+  222  cd ..
+  223  colcon build --packages-select cyclonedds
+  224  sudo apt install ros-foxy-rqt*
+  225  source /opt/ros/foxy/setup.bash
+  226  ls
+  227  colcon build
+  228  ping 192.168.123.161
+  229  cd ..
+  230  ls
+  231  nano setup.sh 
+  232  source setup.sh 
+  233  ros2 topic list
+  234  cd Documents/unitree_ros2/
+  235  ls
+  236  ros2 topic list
+  237  source /opt/ros/foxy/setup.bash
+  238  ros2 topic list
+  239  . setup.sh
+  240  ros2 topic list
+  241  cd unitree_ros2/
+  242  ls
+  243  source /opt/ros/foxy/setup.bash
+  244  . setup.sh 
+  245  ros2 topic list
+  246  ping 192.168.123.161
+  247  cd unitree_ros2/
+  248  source /opt/ros/foxy/setup.bash
+  249  . setup.sh 
+  250  ros2 topic list
+  251  ifconfig
+  252  source /opt/ros/foxy/setup.bash
+  253  cd unitree_ros2/
+  254  . setup.sh 
+  255  ros2 run rqt_image_view rqt_image_view 
+  256  ping 192.168.123.161
+  257  ros2 run rviz2 rviz2
+  258  source /opt/ros/foxy/setup.bash
+  259  cd unitree_ros2/
+  260  . setup.sh 
+  261  ros2 topic list
+  262  ifconfig
+  263  ros2 topic list
+  264  nano setup.sh
+  265  . setup.sh
+  266  ros2 topic list
+  267  ros2 topic echo /utlidar/range_info 
+  268  ros2 topic echo /lf/sportmodestate 
+  269  ros2 topic list
+  270  ros2 topic echo /servicestate
+  271  ros2 topic list
+  272  ros2 service list
+  273  cd example/
+  274  ls
+  275  colcon build
+  276  ./install/unitree_ros2_example/bin/read_motion_state 
+  277  ros2 topic echo --no-arr /utlidar/range_info 
+  278  ros2 topic list
+  279  cd
+  280  nano .bashrc
+  281  cd unitree_sdk2_python/
+  282  ls
+  283  python3 example/helloworld/subscriber.py 
+  284  ls
+  285  ping 192.168.123.161
+  286  pip install unitree_sdk2py
+  287  python3 ./example/helloworld/publisher.py
+  288  cd unitree_sdk2/
+  289  ls
+  290  cd example/
+  291  ls
+  292  cd helloworld/
+  293  ls
+  294  cd
+  295  git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+  296  cd unitree_sdk2_python/
+  297  ls
+  298  python3 /example/helloworld/publisher.py
+  299  ls
+  300  cd example/
+  301  ls
+  302  cd helloworld/
+  303  ls
+  304  python3 publisher.py 
+  305  python3
+  306  cd
+  307  cd unitree_sdk2_python/
+  308  pip3 install -e
+  309  pip3 install -e.
+  310  pip3 install -e .
+  311  python3 example/helloworld/publisher.py 
+  312  ls
+  313  cd
+  314  cd unitree_sdk2_python/
+  315  ls
+  316  cd example/
+  317  ls
+  318  cd g1
+  319  ls
+  320  cd ..
+  321  ls
+  322  cd example/
+  323  ls
+  324  cd b2
+  325  ls
+  326  cd camera/
+  327  ls
+  328  ifconfig
+  329  python3 camera_opencv.py enp1s0
+  330  ls
+  331  cd ..
+  332  cd g1
+  333  ls
+  334  cd audio/
+  335  ls
+  336  python3 g1_audio_client_example.py enp1s0
+  337  cd ..
+  338  ls
+  339  cd high_level/
+  340  ls
+  341  cd ..
+  342  ping 192.168.123.161
+  343  ls
+  344  cd unitree_sdk2
+  345  ls
+  346  cd ./build/bin/
+  347  ls
+  348  ping 192.168.123.161
+  349  ./g1_ankle_swing_example enp1s0
+  350  ./g1_ankle_swing_example
+  351  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+  352  ./g1_ankle_swing_example enp1s0
+  353  cd ..
+  354  cd ~
+  355  ls
+  356  cd unitree_ros2/
+  357  ls
+  358  nano setup.sh
+  359  source ~/unitree_ros2/setup.h
+  360  source ~/unitree_ros2/setup.sh
+  361  sudo apt install ros-foxy-plotjuggler-ros
+  362  ros2 run plotjuggler plotjuggler 
+  363  ls
+  364  cyclonedds_ws/
+  365  ls
+  366  mkdir robotG1_ws
+  367  cd robotG1_ws/
+  368  mkdir src
+  369  cd src/
+  370  git clone https://github.comÇ/Livox_SDK/livos_ros_driver2.git
+  371  git clone https://github.com/Livox_SDK/livos_ros_driver2.git
+  372  git clone https://github.com/Livox-SDK/livox_ros_driver2.git
+  373  cd
+  374  git clone https://github.com/Livox-SDK/Livox-SDK2.git
+  375  cd Livox-SDK2/
+  376  mkdir build
+  377  cd build
+  378  cmake .. && make -j
+  379  sudo make install
+  380  cd 
+  381  cd unitree_ros2/
+  382  cd robotG1_ws/src/livox_ros_driver2/
+  383  ./build.sh ROS2
+  384  cd 
+  385  cd unitree_ros2/
+  386  nano setup.sh
+  387  ls
+  388  cd robotG1_ws/
+  389  ls
+  390  cd src/
+  391  ls
+  392  cd ..
+  393  ls
+  394  cd src/
+  395  ls
+  396  cd livox_ros_driver2/
+  397  ls
+  398  cd config/
+  399  ls
+  400  nano MID360_config.json 
+  401  cd ..
+  402  ls
+  403  source ./install/setup.bash 
+  404* source ~/unitree_ros2/setup.s
+  405* 
+  406  ros2 launch livox_ros_driver2 rviz_MID360_launch.py 
+  407  nmap 19.168.123.1/24
+  408  sudo apt install nmap
+  409  nmap 19.168.123.1/24
+  410  nmap 192.168.123.1/24
+  411  cd ~/Downloads/
+  412  ls
+  413  cd robot_data_lidar/
+  414  ls
+  415  ros2 bag play robot_data_lidar_0.db3
+  416  source ~/unitree_ros2/robotG1_ws/install/setup.bash 
+  417  source ~/unitree_ros2/setup.sh 
+  418  ros2 topic list 
+  419  ifconfig
+  420  ifconrfig
+  421  ifconfig
+  422  apt install obs
+  423  sudo apt install obs-studio 
+  424  obs 
+  425  source ~/unitree_ros2/robotG1_ws/install/setup.bash
+  426  ros2 bag play robot_data_lidar_0.db3
+  427  source ~/unitree_ros2/robotG1_ws/install/setup.bash 
+  428  cd Downloads/
+  429  ls
+  430  cd robot_data_lidar/
+  431  ls
+  432  source ~/unitree_ros2/robotG1_ws/install/setup.bash
+  433  ros2 bag play robot_data_lidar_0.db3
+  434  ping 192.168.123.123
+  435  clear
+  436  ssh 192.168.123.164
+  437  ssh 192.168.123.161
+  438  ssh unitree@192.168.123.161
+  439  ping 192.168.123.161
+  440  ping unitree@192.168.123.164
+  441  ssh unitree@192.168.123.164
+  442  ls
+  443  clear
+  444  ls
+  445  cd unitree_sdk2_python/
+  446  cd example/helloworld/
+  447  ls
+  448  python3 publisher.py 
+  449  clear
+  450  cd ..
+  451  cd g1
+  452  cd low_level/
+  453  ls
+  454  ifonfig
+  455  ifconfig
+  456  python3 g1_low_level_example.py enp1s0
+  457  cd ..
+  458  ls
+  459  cd high_level/
+  460  ls
+  461  python g1_loco_client_example.py enp1s0
+  462  python3 g1_loco_client_example.py enp1s0
+  463  ls
+  464  cd ..
+  465  ls
+  466  cd Robotics4p0/
+  467  ls
+  468  python3 g1_wasd_control.py enp1s0
+  469  nano g1_wasd_control.py 
+  470  python3 g1_wasd_control.py enp1s0
+  471  nano g1_wasd_control.py 
+  472  python3 g1_wasd_control.py enp1s0
+  473  sudo apt install geany
+  474  history > 180325.txt
