@@ -87,11 +87,23 @@ def main():
         print(f"Uso: python3 {sys.argv[0]} <interfaz_red>")
         sys.exit(1)
 
-    print("Asegurese de que el area este despejada.")
+    print("Asegúrese de que el área esté despejada.")
     input("Presiona Enter para continuar...")
-    print("¿El robot se encuentra ya con el equilibrio encendido (Main Operation Control) [s/n]?")
 
-    client = initialize_robot(sys.argv[1])
+    ya_inicializado = input("¿El robot ya está en modo [Main Operation Control] (equilibrio activado)? [s/n]: ").strip().lower()
+    
+    if ya_inicializado == 's':
+        # Solo inicializar Aura sin hacer las rutinas de postura
+        print("Saltando la rutina de inicialización completa...")
+        ChannelFactoryInitialize(0, sys.argv[1])
+        client = LocoClient()
+        client.SetTimeout(10.0)
+        client.Init()
+        print("Aura conectada. Comenzando control...")
+    elif ya_inicializado == 'n':
+        client = initialize_robot(sys.argv[1])
+    else:
+        print('Opcion no valida. Intenta de nuevo...')
     
     info_controles()
 
