@@ -1,6 +1,10 @@
 #ifndef __UT_ROBOT_WAV_READER_HPP__
 #define __UT_ROBOT_WAV_READER_HPP__
 
+namespace ua {
+  namespace robotics {
+    namespace utils {
+
 struct WaveHeader {
   void SeekToDataChunk(std::istream &is) {
     while (is && subchunk2_id != 0x61746164) {
@@ -227,6 +231,9 @@ bool WriteWave(const std::string &filename, int32_t sampling_rate,
   }
 
   return true;
+}
+    }
+  }
 }
 
 #endif
