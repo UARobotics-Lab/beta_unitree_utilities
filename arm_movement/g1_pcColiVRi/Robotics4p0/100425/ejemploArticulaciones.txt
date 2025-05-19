@@ -1,0 +1,18 @@
+LeftShoulderPitch  0.0   ++
+LeftShoulderRoll   0.0   
+LeftShoulderYaw    0.0   
+LeftElbow          0.0   ++
+LeftWristRoll      -1.48
+LeftWristPitch     0.0
+LeftWristYaw       0.0   + 
+RightShoulderPitch 0.0  ++
+RightShoulderRoll  0.0
+RightShoulderYaw   0.0
+RightElbow         0.0  ++
+RightWristRoll     1.48
+RightWristPitch    0.0  +
+RightWristYaw      0.0
+WaistYaw           0.0
+WaistRoll          0.0
+WaistPitch         0.0
+

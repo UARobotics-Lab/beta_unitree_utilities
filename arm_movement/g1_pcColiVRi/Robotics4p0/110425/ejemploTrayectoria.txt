@@ -1,0 +1,5 @@
+adelante 2.5
+rotar_izq 1.0
+izquierda 3
+atras 2
+derecha 1.5
