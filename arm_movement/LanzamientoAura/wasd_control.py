@@ -40,12 +40,12 @@ def info_controles ():
         print('  1       → ShakeHand (Dar la mano) OG')
         print('  2       → WaveHand (Saludo) OG')
         print('  3       → TurnedWaveHand (Saludo invertido) OG')
-        print('  4       → Alvaro')
-        print('  5       → Samuel')
-        print('  6       → Juan David')
-        print('  7       → Jhon')
-        print('  8       → David')
-        print('  9       → Nicolas')
+        print('  4       → NO DEFINIDO')
+        print('  5       → NO DEFINIDO')
+        print('  6       → NO DEFINIDO')
+        print('  7       → NO DEFINIDO')
+        print('  8       → NO DEFINIDO')
+        print('  9       → NO DEFINIDO')
         #print("  0       → NO DEFINIDO")
 
 def initialize_robot(net_interface):
@@ -148,37 +148,43 @@ def main():
             elif key == '4':
                 print("Ejecutando...")
                 import subprocess
-                subprocess.Popen(["python3", "alvaro.py", sys.argv[1]])
+                subprocess.Popen(["python3", "NO DEFINIDO.py", sys.argv[1]])
                 print("Ejecucion finalizada.")
                 info_controles()
             elif key == '5':
                 print("Ejecutando...")
                 import subprocess
-                subprocess.Popen(["python3", "samuel.py", sys.argv[1]])
+                subprocess.Popen(["python3", "NO DEFINIDO.py", sys.argv[1]])
                 print("Ejecucion finalizada.")
                 info_controles()
             elif key == '6':
                 print("Ejecutando...")
                 import subprocess
-                subprocess.Popen(["python3", "juandavid.py", sys.argv[1]])
+                subprocess.Popen(["python3", "NO DEFINIDO.py", sys.argv[1]])
                 print("Ejecucion finalizada.")
                 info_controles()
             elif key == '7':
                 print("Ejecutando...")
                 import subprocess
-                subprocess.Popen(["python3", "jhon.py", sys.argv[1]])
+                subprocess.Popen(["python3", "NO DEFINIDO.py", sys.argv[1]])
                 print("Ejecucion finalizada.")
                 info_controles()
             elif key == '8':
                 print("Ejecutando...")
                 import subprocess
-                subprocess.Popen(["python3", "david.py", sys.argv[1]])
+                subprocess.Popen(["python3", "NO DEFINIDO.py", sys.argv[1]])
                 print("Ejecucion finalizada.")
                 info_controles()
             elif key == '9':
                 print("Ejecutando...")
                 import subprocess
-                subprocess.Popen(["python3", "nicolas.py", sys.argv[1]])
+                subprocess.Popen(["python3", "NO DEFINIDO.py", sys.argv[1]])
+                print("Ejecucion finalizada.")
+                info_controles()
+            elif key == '0':
+                print("Ejecutando...")
+                import subprocess
+                subprocess.Popen(["python3", "NO DEFINIDO.py", sys.argv[1]])
                 print("Ejecucion finalizada.")
                 info_controles()
             elif key == 'p':
