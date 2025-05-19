@@ -47,7 +47,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 3",
@@ -70,7 +70,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 4",
@@ -93,7 +93,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 5",
@@ -116,7 +116,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 6",
@@ -139,7 +139,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 7",
@@ -162,7 +162,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 8",
@@ -185,7 +185,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 9",
@@ -208,7 +208,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 10",
@@ -231,7 +231,7 @@
         "13": 0.0,
         "14": 0.0
       },
-      "duracion": 1.5
+      "duracion": 0.5
     },
     {
       "nombre": "Paso 1",
