@@ -1,10 +1,11 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.10)
 project(unitree_cpp_utilities)
 
 set(CMAKE_CXX_STANDARD 17)
 list(APPEND CMAKE_PREFIX_PATH "/opt/unitree_robotics")
 find_package(unitree_sdk2 REQUIRED)
 
-add_subdirectory(audio)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(play_wav PRIVATE unitree_sdk2)
+add_subdirectory(src)
+add_subdirectory(executables)

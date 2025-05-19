@@ -1,1 +1,3 @@
-add_subdirectory(executables)
+add_executable(play_wav play_wav_executable.cpp)
+
+target_link_libraries(play_wav PRIVATE ua_robotics)

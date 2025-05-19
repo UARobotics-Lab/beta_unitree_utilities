@@ -6,11 +6,10 @@
 #include <unitree/common/time/time_tool.hpp>
 #include <unitree/robot/g1/audio/g1_audio_client.hpp>
 
-#include "../utils/audio/wav.hpp"
-#include "../utils/vector/vector_utils.hpp"
+#include <ua_robotics/utils/audio/wav.hpp>
+#include <ua_robotics/utils/vector/vector_utils.hpp>
 
-#define APP_NAME "wav_player"
-
+#include <ua_robotics/audio/play_wav.hpp>
 
 /**
  * Generates a unique identifier based on the current time in milliseconds.
@@ -62,8 +61,8 @@ std::vector<uint8_t> read_audio(const std::string &filename, int32_t *sampling_r
 void play_audio(
   const std::string &net_interface,
   const std::string &audio_path,
-  const int volume = DEFAULT_VOLUME_VALUE,
-  const int chunk_seconds_length = DEFAULT_CHUNK_SECONDS_LENGTH
+  const int volume,
+  const int chunk_seconds_length
 ) {
   unitree::robot::ChannelFactory::Instance()->Init(0, net_interface);
   unitree::robot::g1::AudioClient client;

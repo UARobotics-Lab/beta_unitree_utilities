@@ -4,7 +4,7 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include "../play_wav.cpp"
+#include <ua_robotics/audio/play_wav.hpp>
 
 
 void print_usage() {

@@ -5,8 +5,10 @@
 #define PLAY_WAV_HPP
 #include <string>
 
-#define DEFAULT_VOLUME_VALUE 70
-#define DEFAULT_CHUNK_SECONDS_LENGTH 4
+#define APP_NAME "wav_player"
+
+constexpr int DEFAULT_VOLUME_VALUE = 70;
+constexpr int DEFAULT_CHUNK_SECONDS_LENGTH = 4;
 
 void play_audio(
   const std::string &net_interface,
