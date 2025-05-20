@@ -18,7 +18,8 @@ int main() {
     unitree::robot::ChannelSubscriber<SimpleMessage::Msg> subscriber("AUDIO_PATHS");
     subscriber.InitChannel(Handler);
     std::string input;
-    std::cout << "Press enter to close the service\n> ";
-    std::getline(std::cin, input);
+    while (true) {
+        unitree::common::Sleep(10);
+    }
     subscriber.CloseChannel();
 }
