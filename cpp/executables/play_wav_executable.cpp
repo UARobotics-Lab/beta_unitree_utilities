@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <ua_robotics/audio/play_wav.hpp>
+#include <ua_robotics/utils/cli/args_parser.h>
 
 
 void print_usage() {
@@ -16,25 +17,6 @@ void print_usage() {
   std::cout << std::endl;
 }
 
-std::map<std::string, std::string> parse_named_args(const int argc, char const *argv[], const int start_index) {
-  std::map<std::string, std::string> args;
-
-  for (int i = start_index; i < argc; ++i) {
-    std::string arg(argv[i]);
-    const size_t pos = arg.find('=');
-    if (arg.substr(0, 2) != "--" || pos == std::string::npos) {
-      std::cerr << "Unknown or malformed argument: " << arg << "\n";
-      print_usage();
-      exit(1);
-    }
-    std::string key = arg.substr(2, pos - 2);
-    const std::string value = arg.substr(pos + 1);
-    args[key] = value;
-  }
-
-  return args;
-}
-
 void get_execution_params(const int argc, char const *argv[], std::string *arg_network_interface, std::string *arg_audio_path, int *arg_volume, int *arg_chunk_seconds_length) {
   if (argc < 3) {
     std::cerr << "Error: Missing required arguments.\n";
@@ -43,7 +25,7 @@ void get_execution_params(const int argc, char const *argv[], std::string *arg_n
   }
 
   const std::string network_interface = argv[1];
-  std::map<std::string, std::string> args = parse_named_args(argc, argv, 2);
+  std::map<std::string, std::string> args = parse_named_args(argc, argv, 2, print_usage);
 
   if (args.find("if") == args.end()) {
     std::cerr << "Error: Missing required argument --if=<wav_file_path>\n";

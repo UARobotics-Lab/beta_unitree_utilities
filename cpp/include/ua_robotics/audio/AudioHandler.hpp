@@ -3,12 +3,13 @@
 //
 #ifndef AUDIOHANDLER_HPP
 #define AUDIOHANDLER_HPP
+#include <condition_variable>
 #include <mutex>
 #include <string>
 #include <unordered_set>
 #include "play_wav.hpp"
 
-constexpr uint64_t chunk_length = DEFAULT_CHUNK_SECONDS_LENGTH * ALLOWED_SAMPLE_RATE * 2;
+constexpr uint64_t CHUNK_LENGTH = DEFAULT_CHUNK_SECONDS_LENGTH * ALLOWED_SAMPLE_RATE * 2;
 
 class AudioHandler {
 public:
@@ -28,13 +29,15 @@ private:
     ~AudioHandler();
 
     void chunk_processor(const std::string &audio_path, std::vector<uint8_t> data);
-    void player();
+    [[noreturn]] void player();
+
+    std::mutex play_mutex;
+    std::condition_variable play_cv;
+    std::condition_variable add_cv;
 
     std::unordered_set<std::string> audio_paths;
-    std::mutex paths_mtx;
     std::vector<std::vector<uint8_t>> chunks_to_play;
     std::unordered_set<std::string> chunks_ready;
-    std::mutex chunks_mtx;
 };
 
 #endif //AUDIOHANDLER_HPP

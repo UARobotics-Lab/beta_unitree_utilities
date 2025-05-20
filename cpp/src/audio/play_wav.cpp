@@ -93,7 +93,7 @@ void play_audio(
       const uint64_t start = unitree::common::GetCurrentTimeMicrosecond();
       get_chunk(&chunk, &audio_data, &empty, chunk_length);
       const uint64_t elapsedTime = unitree::common::GetCurrentTimeMicrosecond() - start;
-      const uint64_t to_sleep = 1000000 * chunk_length - elapsedTime;
+      const uint64_t to_sleep = 1'000'000 * chunk_length - elapsedTime;
       unitree::common::MicroSleep(to_sleep);
     }
   } else {
