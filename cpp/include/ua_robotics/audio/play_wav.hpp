@@ -11,8 +11,8 @@
 
 constexpr int DEFAULT_VOLUME_VALUE = 70;
 constexpr int DEFAULT_CHUNK_SECONDS_LENGTH = 4;
-constexpr int ALLOWED_SAMPLE_RATE = 16000;
-constexpr int ALLOWED_CHANNELS = 1;
+constexpr int32_t ALLOWED_SAMPLE_RATE = 16000;
+constexpr int8_t ALLOWED_CHANNELS = 1;
 
 std::vector<uint8_t> read_audio(const std::string &filename, int32_t *sampling_rate, int8_t *channelCount, bool *is_ok);
 

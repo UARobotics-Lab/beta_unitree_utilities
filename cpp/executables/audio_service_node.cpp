@@ -9,7 +9,7 @@
 void Handler(const void* msg) {
     const auto* message = static_cast<const SimpleMessage::Msg *>(msg);
     std::cout << "Starting " << message->message() << std::endl;
-    AudioHandler::getInstance().add(message->message());
+    play_audio("enp8s0", message->message(), 90, 6);
 }
 
 

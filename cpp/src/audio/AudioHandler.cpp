@@ -19,7 +19,6 @@ AudioHandler &AudioHandler::getInstance() {
 }
 
 AudioHandler::AudioHandler() {
-    std::cout << "kdsljflksjfdsdlkhf" << std::endl;
     unitree::robot::ChannelFactory::Instance()->Init(0, "enp8s0");
     std::thread player_thread(&AudioHandler::player, this);
     player_thread.detach();
@@ -27,16 +26,12 @@ AudioHandler::AudioHandler() {
 AudioHandler::~AudioHandler() = default;
 
 bool AudioHandler::add(const std::string &audio_path) {
-    std::cout << "Trying to add " << audio_path << std::endl;
-
     play_mutex.lock();
     if (audio_paths.count(audio_path)) {
         play_mutex.unlock();
         return false;
     }
     play_mutex.unlock();
-
-    std::cout << "Trying to load " << audio_path << std::endl;
 
 
     // Load the audio
@@ -48,8 +43,6 @@ bool AudioHandler::add(const std::string &audio_path) {
     if (sample_rate != ALLOWED_SAMPLE_RATE || num_channels != ALLOWED_CHANNELS || !isAudioFilePlayable) {
         return false;
     }
-
-    std::cout << "Loaded " << audio_path << std::endl;
 
     play_mutex.lock();
     audio_paths.insert(audio_path);
@@ -69,20 +62,15 @@ bool AudioHandler::remove(const std::string &audio_path) {
 void AudioHandler::chunk_processor(const std::string &audio_path, std::vector<uint8_t> data) {
     bool empty = false;
     std::vector<uint8_t> chunk;
-    std::cout << "Started chunks from " << audio_path << std::endl;
     std::unique_lock chunks_lock(play_mutex);
-    std::cout << "Mutex acquired for " << audio_path << std::endl;
 
     while (!empty) {
         get_chunk(&chunk, &data, &empty, CHUNK_LENGTH);
-        std::cout << "Waiting for chunks ready to not have " << audio_path << chunks_ready.count(audio_path) << std::endl;
         add_cv.wait(chunks_lock, [&] {
            return chunks_ready.count(audio_path) == 0;
         });
-        std::cout << "Finishing waiting for " << audio_path << std::endl;
         chunks_to_play.push_back(chunk);
         chunks_ready.insert(audio_path);
-        std::cout << "Added chunk from " << audio_path << std::endl;
         play_cv.notify_one();
     }
     add_cv.wait(chunks_lock, [&] {
@@ -90,11 +78,9 @@ void AudioHandler::chunk_processor(const std::string &audio_path, std::vector<ui
     });
     audio_paths.erase(audio_path);
     chunks_lock.unlock();
-    std::cout << "Finished chunks from " << audio_path << std::endl;
 }
 
 [[noreturn]] void AudioHandler::player() {
-    std::cout << "Processor initialized " << std::endl;
     unitree::robot::g1::AudioClient client;
     client.Init();
     client.SetVolume(100);
@@ -104,7 +90,6 @@ void AudioHandler::chunk_processor(const std::string &audio_path, std::vector<ui
     while (true) {
         // Play current chunk
         if (!chunk_to_play.empty()) {
-            std::cout << "Playing chunk" << std::endl;
             playing = true;
             client.PlayStream("afdjudha", std::to_string(unitree::common::GetCurrentTimeMillisecond()), chunk_to_play);
         }
@@ -116,12 +101,9 @@ void AudioHandler::chunk_processor(const std::string &audio_path, std::vector<ui
         chunk_to_play = mix_audios(chunks_to_play);
         chunks_ready.clear();
         chunks_to_play.clear();
-        std::cout << "Cleared chunks ready and chunks to play." << std::endl;
         const uint64_t elapsedTime = unitree::common::GetCurrentTimeMicrosecond() - start;
         const uint64_t to_sleep = 1'000'000 * DEFAULT_CHUNK_SECONDS_LENGTH - elapsedTime;
-        std::cout << "To_Sleep: " << to_sleep << " | Ellapsed: " << elapsedTime << "Chunk length:" << CHUNK_LENGTH << std::endl;
         if (playing) unitree::common::MicroSleep(to_sleep);
-        std::cout << "Done sleeping" << std::endl;
         playing = false;
         add_cv.notify_all();
     }
