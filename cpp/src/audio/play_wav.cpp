@@ -80,9 +80,9 @@ void play_audio(
             << " num_channels =  " << std::to_string(num_channels)
             << " isAudioFilePlayable =" << isAudioFilePlayable << std::endl;
 
-  const int chunk_length = chunk_seconds_length * 16000 * 2;
+  const int chunk_length = chunk_seconds_length * ALLOWED_SAMPLE_RATE * 2;
 
-  if (isAudioFilePlayable && sample_rate == 16000 && num_channels == 1) {
+  if (isAudioFilePlayable && sample_rate == ALLOWED_SAMPLE_RATE && num_channels == ALLOWED_CHANNELS) {
     std::vector<uint8_t> chunk;
 
     bool empty = false;

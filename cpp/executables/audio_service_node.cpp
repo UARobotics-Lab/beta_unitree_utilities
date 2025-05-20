@@ -3,10 +3,12 @@
 //
 #include <unitree/robot/channel/channel_subscriber.hpp>
 #include <ua_robotics/messages/SimpleMessage.hpp>
+#include <ua_robotics/audio/AudioHandler.hpp>
 
 
 void Handler(const void* msg) {
-
+    const auto* message = static_cast<const SimpleMessage::Msg *>(msg);
+    AudioHandler::getInstance().add(message->message());
 }
 
 
