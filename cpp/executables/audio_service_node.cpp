@@ -9,12 +9,12 @@
 void Handler(const void* msg) {
     const auto* message = static_cast<const SimpleMessage::Msg *>(msg);
     std::cout << "Starting " << message->message() << std::endl;
-    play_audio("enp8s0", message->message(), 90, 6);
+    play_audio("eth0", message->message(), 90, 6);
 }
 
 
 int main() {
-    unitree::robot::ChannelFactory::Instance()->Init(0, "enp8s0");
+    unitree::robot::ChannelFactory::Instance()->Init(0, "eth0");
     unitree::robot::ChannelSubscriber<SimpleMessage::Msg> subscriber("AUDIO_PATHS");
     subscriber.InitChannel(Handler);
     std::string input;

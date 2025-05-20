@@ -19,7 +19,7 @@ AudioHandler &AudioHandler::getInstance() {
 }
 
 AudioHandler::AudioHandler() {
-    unitree::robot::ChannelFactory::Instance()->Init(0, "enp8s0");
+    unitree::robot::ChannelFactory::Instance()->Init(0, "eth0");
     std::thread player_thread(&AudioHandler::player, this);
     player_thread.detach();
 }
