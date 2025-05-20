@@ -15,7 +15,7 @@ void print_usage() {
 }
 
 int main(const int argc, char const *argv[]) {
-    ChannelFactory::Instance()->Init(0);
+    ChannelFactory::Instance()->Init(0, "enp8s0");
     ChannelPublisher<SimpleMessage::Msg> publisher("AUDIO_PATHS");
     std::map<std::string, std::string> args = parse_named_args(argc, argv, 1, print_usage);
     if (args.find("if") == args.end()) {

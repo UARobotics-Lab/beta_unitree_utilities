@@ -19,9 +19,8 @@ AudioHandler &AudioHandler::getInstance() {
 }
 
 AudioHandler::AudioHandler() {
-    unitree::robot::ChannelFactory::Instance()->Init(0, net_interface);
-    unitree::robot::g1::AudioClient client;
-    client.Init();
+    std::cout << "kdsljflksjfdsdlkhf" << std::endl;
+    unitree::robot::ChannelFactory::Instance()->Init(0, "enp8s0");
     std::thread player_thread(&AudioHandler::player, this);
     player_thread.detach();
 }
@@ -96,6 +95,9 @@ void AudioHandler::chunk_processor(const std::string &audio_path, std::vector<ui
 
 [[noreturn]] void AudioHandler::player() {
     std::cout << "Processor initialized " << std::endl;
+    unitree::robot::g1::AudioClient client;
+    client.Init();
+    client.SetVolume(100);
     std::unique_lock play_lock(play_mutex);
     std::vector<uint8_t> chunk_to_play;
     bool playing = false;
@@ -104,7 +106,7 @@ void AudioHandler::chunk_processor(const std::string &audio_path, std::vector<ui
         if (!chunk_to_play.empty()) {
             std::cout << "Playing chunk" << std::endl;
             playing = true;
-            client
+            client.PlayStream("afdjudha", std::to_string(unitree::common::GetCurrentTimeMillisecond()), chunk_to_play);
         }
         const uint64_t start = unitree::common::GetCurrentTimeMicrosecond();
         chunk_to_play.clear();
