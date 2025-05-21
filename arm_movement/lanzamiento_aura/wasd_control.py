@@ -36,7 +36,6 @@ def info_controles ():
         print("  ESPACIO → Detenerse sin apagar")
         print("  ESC     → Salir con opciones de apagado")
         print("  R       → Liberar control de los brazos")
-        print("  P       → Parada directa: entra en modo DAMP y cierra el programa")
         print('  1       → ShakeHand (Dar la mano) OG')
         print('  2       → WaveHand (Saludo) OG')
         print('  3       → TurnedWaveHand (Saludo invertido) OG')
@@ -48,6 +47,7 @@ def info_controles ():
         print('  9       → Sorprendido')
         print("  0       → ¡Oh no!")
         print("  M       → La Macarena")
+        print("  Y       → YMCA")
 
 def initialize_robot(net_interface):
     """Inicializa el robot y lo deja listo para caminar."""
@@ -194,10 +194,6 @@ def main():
                 subprocess.Popen(["python3", "macarena.py", sys.argv[1]])
                 print("Ejecucion finalizada.")
                 info_controles()
-            elif key == 'p':
-                client.Damp()
-                print("Se activo la parada de emergencia (tecla 'p').")
-                print("Robot en [Damping Mode]. Terminando ejecucion, oprima [ctr+c]...")
             elif key == 'h':
                 info_controles()
             elif key == ' ':
