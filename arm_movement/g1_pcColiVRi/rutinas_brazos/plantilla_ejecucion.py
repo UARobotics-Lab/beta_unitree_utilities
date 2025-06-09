@@ -117,19 +117,6 @@ class ArmSequence:
         self.q_init_override = q_init_override
         while self.t < self.T:
             time.sleep(self.control_dt)
-            
-    def freeze_and_release(self):
-        for joint in self.arm_joints:
-            self.low_cmd.motor_cmd[joint].q = self.low_state.motor_state[joint].q
-            self.low_cmd.motor_cmd[joint].dq = 0.0
-            self.low_cmd.motor_cmd[joint].tau = 0.0
-            self.low_cmd.motor_cmd[joint].kp = 0.0
-            self.low_cmd.motor_cmd[joint].kd = 0.0
-        self.low_cmd.motor_cmd[G1JointIndex.kNotUsedJoint].q = 0
-        self.low_cmd.crc = self.crc.Crc(self.low_cmd)
-        self.publisher.Write(self.low_cmd)
-
-
 
 def main():
     if len(sys.argv) < 2:
@@ -155,8 +142,6 @@ def main():
         duracion = paso.get("duracion", 1.25)
         seq.move_to(posiciones, duration=duracion, q_init_override=q_anterior)
         q_anterior = posiciones
-        
-    seq.freeze_and_release()
 
 if __name__ == "__main__":
     main()
