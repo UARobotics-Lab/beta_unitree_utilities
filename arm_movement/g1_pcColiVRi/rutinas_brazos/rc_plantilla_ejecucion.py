@@ -1,5 +1,5 @@
 #RUTA DE LA RUTINA
-ruta="NOMBRE_ARCHIVO.txt"
+ruta="archivos_pasos/ohno.txt"
 
 import sys
 import time

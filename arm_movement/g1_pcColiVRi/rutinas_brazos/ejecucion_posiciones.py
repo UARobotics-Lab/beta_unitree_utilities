@@ -1,6 +1,3 @@
-#RUTA DE LA RUTINA
-ruta="NOMBRE_ARCHIVO.txt"
-
 import sys
 import time
 import math
@@ -97,9 +94,14 @@ class ArmSequence:
         self.low_cmd.motor_cmd[G1JointIndex.kNotUsedJoint].q = 1
 
         for joint in self.arm_joints:
-            q_init = self.q_init_override.get(joint, self.low_state.motor_state[joint].q) if self.q_init_override else self.low_state.motor_state[joint].q
+            if self.q_init_override and joint in self.q_init_override:
+                q_init = self.q_init_override[joint]
+            else:
+                q_init = self.low_state.motor_state[joint].q
+
             q_target = self.target_pos.get(joint, q_init)
             pos = self.interpolate_position(q_init, q_target)
+
             self.low_cmd.motor_cmd[joint].q = pos
             self.low_cmd.motor_cmd[joint].dq = 0.0
             self.low_cmd.motor_cmd[joint].tau = 0.0
@@ -115,48 +117,51 @@ class ArmSequence:
         self.T = duration
         self.t = 0.0
         self.q_init_override = q_init_override
+
         while self.t < self.T:
             time.sleep(self.control_dt)
-            
-    def freeze_and_release(self):
-        for joint in self.arm_joints:
-            self.low_cmd.motor_cmd[joint].q = self.low_state.motor_state[joint].q
-            self.low_cmd.motor_cmd[joint].dq = 0.0
-            self.low_cmd.motor_cmd[joint].tau = 0.0
-            self.low_cmd.motor_cmd[joint].kp = 0.0
-            self.low_cmd.motor_cmd[joint].kd = 0.0
-        self.low_cmd.motor_cmd[G1JointIndex.kNotUsedJoint].q = 0
-        self.low_cmd.crc = self.crc.Crc(self.low_cmd)
-        self.publisher.Write(self.low_cmd)
-
-
 
 def main():
     if len(sys.argv) < 2:
-        sys.exit()
-    ruta_archivo_txt = ruta
+        sys.exit("Uso: python3 ejecutar_posiciones.py <interfaz_red>")
+
+    nombre_archivo = input("Ingrese el nombre del archivo .txt con las posiciones: ").strip()
+    if not nombre_archivo.endswith(".txt"):
+        nombre_archivo += ".txt"
 
     try:
-        with open(ruta_archivo_txt, 'r') as f:
+        with open(nombre_archivo, 'r') as f:
             data = json.load(f)
-    except:
-        sys.exit()
+    except Exception as e:
+        sys.exit(f"Error leyendo el archivo: {e}")
 
     pasos = data.get("pasos", [])
+    nombre_rutina = data.get("nombre_rutina", "Rutina sin nombre")
+    fecha_creacion = data.get("fecha_creacion", "Fecha desconocida")
+
+    print(f"\nNombre de la rutina: {nombre_rutina}")
+    print(f"Fecha de creación: {fecha_creacion}")
+    print(f"Número de pasos: {len(pasos)}")
 
     ChannelFactoryInitialize(0, sys.argv[1])
     seq = ArmSequence()
     seq.Init()
     seq.Start()
 
+    print(f"\nEjecutando {len(pasos)} pasos...\n")
+
     q_anterior = None
-    for paso in pasos:
+
+    for i, paso in enumerate(pasos):
+        nombre = paso.get("nombre", f"Paso {i+1}")
         posiciones = {int(k): v for k, v in paso.get("posiciones", {}).items()}
         duracion = paso.get("duracion", 1.25)
+        print(f"{nombre} → Duración: {duracion:.2f} segundos")
+
         seq.move_to(posiciones, duration=duracion, q_init_override=q_anterior)
-        q_anterior = posiciones
-        
-    seq.freeze_and_release()
+        q_anterior = posiciones  # para siguiente paso
+
+    print("\nSecuencia completada.")
 
 if __name__ == "__main__":
     main()
