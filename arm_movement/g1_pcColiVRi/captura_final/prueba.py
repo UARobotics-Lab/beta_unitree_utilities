@@ -1,5 +1,5 @@
 #RUTA DE LA RUTINA
-ruta="presentacion.txt"
+ruta="prueba.txt"
 
 import sys
 import time

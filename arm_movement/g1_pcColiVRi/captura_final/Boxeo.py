@@ -1,5 +1,5 @@
 #RUTA DE LA RUTINA
-ruta="presenta_novaR.txt"
+ruta="Boxeo.txt"
 
 import sys
 import time
